@@ -1,9 +1,9 @@
 package ch.makery.address;
 
-import java.awt.*;
 import java.io.IOException;
 
 import ch.makery.address.model.Person;
+import ch.makery.address.view.ButtonMenuViewController;
 import ch.makery.address.view.PersonEditDialogController;
 import ch.makery.address.view.PersonOverviewController;
 import javafx.application.Application;
@@ -31,15 +31,15 @@ public class MainApp extends Application {
      */
     public MainApp() {
         // Add some sample data
-        personData.add(new Person("Hans", "Muster"));
-        personData.add(new Person("Ruth", "Mueller"));
-        personData.add(new Person("Heinz", "Kurz"));
-        personData.add(new Person("Cornelia", "Meier"));
-        personData.add(new Person("Werner", "Meyer"));
-        personData.add(new Person("Lydia", "Kunz"));
-        personData.add(new Person("Anna", "Best"));
-        personData.add(new Person("Stefan", "Meier"));
-        personData.add(new Person("Martin", "Mueller"));
+        personData.add(new Person("Hans", "Muster","1995", "M2", "Imagerie"));
+        personData.add(new Person("Ruth", "Mueller","1995", "M2", "Imagerie"));
+        personData.add(new Person("Heinz", "Kurz","1995", "M1", "Imagerie"));
+        personData.add(new Person("Cornelia", "Meier","1995", "M1", "Imagerie"));
+        personData.add(new Person("Werner", "Meyer","1995", "L3", "Aucune"));
+        personData.add(new Person("Lydia", "Kunz","1995","M1", "Imagerie"));
+        personData.add(new Person("Anna", "Best","1995", "M2", "Imagerie"));
+        personData.add(new Person("Stefan", "Meier","1995", "M1", "Imagerie"));
+        personData.add(new Person("Martin", "Mueller","1995", "M2", "Imagerie"));
     }
 
     /**
@@ -60,15 +60,15 @@ public class MainApp extends Application {
         this.primaryStage.setTitle("AddressApp");
         //this.primaryStage.getIcons().add(new Image("C:\Users\Adélaïde Pillois\Documents\IHM\iconfinder_Book3_34201.png"));
 
-        initRootLayout();
+        //initRootLayout();
 
-        showPersonOverview();
+        showButtonMenuView();
     }
 
     /**
      * Initializes the root layout.
      */
-    public void initRootLayout() {
+    /*public void initRootLayout() {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
@@ -82,20 +82,25 @@ public class MainApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     /**
      * Shows the person overview inside the root layout.
      */
-    public void showPersonOverview() {
+    public boolean showPersonOverview() {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/PersonOverview.fxml"));
             AnchorPane personOverview = (AnchorPane) loader.load();
 
+            //Show the scene containing.
+            Scene scene = new Scene(personOverview);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+
             // Set person overview into the center of root layout.
-            rootLayout.setCenter(personOverview);
+            //rootLayout.setCenter(personOverview);
 
             // Give the controller access to the main app.
             PersonOverviewController controller = loader.getController();
@@ -104,7 +109,35 @@ public class MainApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return false;
     }
+
+    /**
+     * Shows the person overview inside the root layout.
+     */
+    public void showButtonMenuView() {
+        try {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/ButtonMenuView.fxml"));
+            AnchorPane buttonMenuView = (AnchorPane) loader.load();
+            //Show the scene containing.
+            Scene scene = new Scene(buttonMenuView);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+
+            // Set person overview into the center of root layout.
+            //rootLayout.setCenter(buttonMenuView);
+
+            // Give the controller access to the main app.
+            ButtonMenuViewController controller = loader.getController();
+            controller.setMainApp(this);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * Opens a dialog to edit details for the specified person. If the user
@@ -119,7 +152,7 @@ public class MainApp extends Application {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/PersonEditDialog.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
+            AnchorPane page = loader.load();
 
             // Create the dialog Stage.
             Stage dialogStage = new Stage();
