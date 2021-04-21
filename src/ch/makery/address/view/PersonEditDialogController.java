@@ -1,11 +1,10 @@
 package ch.makery.address.view;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SplitMenuButton;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import ch.makery.address.model.Person;
 import ch.makery.address.util.DateUtil;
@@ -18,16 +17,21 @@ import ch.makery.address.util.DateUtil;
  */
 public class PersonEditDialogController {
 
+    ObservableList<String> promoList = FXCollections.observableArrayList("L3", "M1", "M2");
+
     @FXML
     private TextField firstNameField;
     @FXML
     private TextField lastNameField;
     @FXML
     private TextField birthdayField;
-    @FXML
+    /*@FXML
     private SplitMenuButton promoField;
     @FXML
-    private SplitMenuButton optionField;
+    private SplitMenuButton optionField;*/
+
+    @FXML
+    private ChoiceBox promoBox;
 
     private Stage dialogStage;
     private Person person;
@@ -40,7 +44,10 @@ public class PersonEditDialogController {
      */
     @FXML
     private void initialize() {
+        promoBox.setValue("L3");
+        promoBox.setItems(promoList);
     }
+
 
     /**
      * Sets the stage of this dialog.
@@ -63,8 +70,8 @@ public class PersonEditDialogController {
         lastNameField.setText(person.getLastName());
         birthdayField.setText(person.getBirthday());
         //birthdayField.setPromptText("yyyy");
-        promoField.setText(person.getPromo());
-        optionField.setText(person.getOption());
+         promoBox.setValue(person.getPromo());
+       // optionField.setText(person.getOption());
 
 
     }
@@ -87,8 +94,8 @@ public class PersonEditDialogController {
             person.setFirstName(firstNameField.getText());
             person.setLastName(lastNameField.getText());
             person.setBirthday(birthdayField.getText());//recupere la longueur pas la valeur car sais pas faire
-            person.setPromo(promoField.getText());
-            person.setOption(optionField.getText());
+            person.setPromo( promoBox.getValue());
+           // person.setOption(optionField.getText());
             okClicked = true;
             dialogStage.close();
         }

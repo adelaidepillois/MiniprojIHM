@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitMenuButton?>
@@ -36,24 +37,16 @@
              <TextField fx:id="lastNameField" GridPane.columnIndex="1" />
             <TextField fx:id="birthdayField" prefHeight="37.0" prefWidth="292.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
              <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-
-             <SplitMenuButton fx:id="promoField" mnemonicParsing="false" text="Promo" GridPane.columnIndex="1" GridPane.rowIndex="3">
-              <items>
-                <MenuItem mnemonicParsing="false" text="L3" />
-                <MenuItem mnemonicParsing="false" text="M1" />
-                  <MenuItem mnemonicParsing="false" text="M2" />
-
-              </items>
-            </SplitMenuButton>
             <SplitMenuButton fx:id="optionField" mnemonicParsing="false" text="Option" GridPane.columnIndex="1" GridPane.rowIndex="4">
               <items>
-                <MenuItem mnemonicParsing="false"  text="Imagerie" />
-                <MenuItem mnemonicParsing="false"  text="Biotechnologie" />
-                  <MenuItem mnemonicParsing="false"  text="Physiologie" />
-                  <MenuItem mnemonicParsing="false"  text="Aucune" />
+                <MenuItem mnemonicParsing="false" text="Imagerie" />
+                <MenuItem mnemonicParsing="false" text="Biotechnologie" />
+                  <MenuItem mnemonicParsing="false" text="Physiologie" />
+                  <MenuItem mnemonicParsing="false" text="Aucune" />
 
               </items>
             </SplitMenuButton>
+            <ChoiceBox fx:id="promoBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
          </children>
       </GridPane>
