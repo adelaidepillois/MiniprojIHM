@@ -9,6 +9,9 @@ import javafx.scene.control.TableView;
 import ch.makery.address.MainApp;
 import ch.makery.address.model.Person;
 
+import java.awt.event.ActionEvent;
+import java.io.IOException;
+
 public class PersonOverviewController {
     @FXML
     private TableView<Person> personTable;
@@ -22,6 +25,7 @@ public class PersonOverviewController {
     private TableColumn<Person, String> promoColumn;
     @FXML
     private TableColumn<Person, String> optionColumn;
+
 
 
     // Reference to the main application.
@@ -142,6 +146,13 @@ public class PersonOverviewController {
             alert.showAndWait();
         }
     }
+
+    @FXML
+    private void retourButton() {
+            mainApp.showButtonMenuView();
+        }
+
+
 
         /**
          * Is called by the main application to give a reference back to itself.

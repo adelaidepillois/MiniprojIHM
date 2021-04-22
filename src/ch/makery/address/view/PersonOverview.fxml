@@ -34,7 +34,7 @@
       <ButtonBar layoutX="316.0" layoutY="346.0" prefHeight="40.0" prefWidth="250.0">
         <buttons>
           <Button mnemonicParsing="false" onAction="#handleEditPerson" text="Edit" />
-            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="118.0" text="Cancel" />
+            <Button mnemonicParsing="false" onAction="#retourButton" prefHeight="34.0" prefWidth="118.0" text="Cancel" />
         </buttons>
       </ButtonBar>
    </children>

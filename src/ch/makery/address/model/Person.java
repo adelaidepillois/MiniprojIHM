@@ -2,7 +2,6 @@ package ch.makery.address.model;
 
 
 import javafx.beans.property.*;
-import javafx.collections.ObservableList;
 
 /**
  * Model class for a Person.
@@ -37,12 +36,7 @@ public class Person {
         this.lastName = new SimpleStringProperty(lastName);
         this.promo = new SimpleStringProperty(promo);
         this.option = new SimpleStringProperty(option);
-
-        // Some initial dummy data, just for convenient testing.
         this.birthday = new SimpleStringProperty(birthday);
-        //this.promo = new SimpleStringProperty("M1");
-        //this.option = new SimpleStringProperty("Imagerie");
-
 
     }
 
@@ -80,7 +74,12 @@ public class Person {
         return promo.get();
     }*/
 
+    public String getPromo() {
+        return promo;
+    }
 
+    public void setPromo(Object value) {
+    }
 
     public StringProperty optionProperty() {
         return option;
@@ -105,13 +104,4 @@ public class Person {
         return birthday;
     }
 
-
-
-
-    public Object getPromo() {
-        return promo;
-    }
-
-    public void setPromo(Object value) {
-    }
 }

@@ -4,8 +4,6 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -37,16 +35,8 @@
              <TextField fx:id="lastNameField" GridPane.columnIndex="1" />
             <TextField fx:id="birthdayField" prefHeight="37.0" prefWidth="292.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
              <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <SplitMenuButton fx:id="optionField" mnemonicParsing="false" text="Option" GridPane.columnIndex="1" GridPane.rowIndex="4">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Imagerie" />
-                <MenuItem mnemonicParsing="false" text="Biotechnologie" />
-                  <MenuItem mnemonicParsing="false" text="Physiologie" />
-                  <MenuItem mnemonicParsing="false" text="Aucune" />
-
-              </items>
-            </SplitMenuButton>
             <ChoiceBox fx:id="promoBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="optionBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 
          </children>
       </GridPane>
