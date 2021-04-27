@@ -18,11 +18,11 @@
                      <children>
                         <TableView fx:id="personTable" layoutX="-1.0" prefHeight="299.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
                           <columns>
-                            <TableColumn fx:id="firstNameColumn" prefWidth="88.0" text="Prénom" />
-                            <TableColumn fx:id="lastNameColumn" prefWidth="99.5" text="Nom" />
+                            <TableColumn fx:id="firstNameColumn" prefWidth="116.5" text="Prénom" />
+                            <TableColumn fx:id="lastNameColumn" prefWidth="128.5" text="Nom" />
                               <TableColumn fx:id="birthdayColumn" prefWidth="125.5" text="Année de naissance" />
-                              <TableColumn fx:id="promoColumn" minWidth="0.0" prefWidth="74.0" text="Promotion" />
-                              <TableColumn fx:id="optionColumn" prefWidth="62.5" text="Option" />
+                              <TableColumn fx:id="promoColumn" minWidth="0.0" prefWidth="89.5" text="Promotion" />
+                              <TableColumn fx:id="optionColumn" prefWidth="135.0" text="Option" />
                           </columns>
                         </TableView>
                      </children>

@@ -1,19 +1,14 @@
 package ch.makery.address.view;
 
-import javafx.beans.value.ObservableValue;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import ch.makery.address.model.Person;
-import ch.makery.address.util.DateUtil;
 
-import java.awt.event.ActionEvent;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 
 /**
@@ -24,6 +19,7 @@ import java.util.ResourceBundle;
 public class PersonEditDialogController {
 
     ObservableList<String> promoList = FXCollections.observableArrayList("L3", "M1", "M2");
+    ObservableList<String> optionList = FXCollections.observableArrayList("Imagerie", "Biotechnologie", "Physiologie");
 
     @FXML
     private TextField firstNameField;
@@ -31,18 +27,13 @@ public class PersonEditDialogController {
     private TextField lastNameField;
     @FXML
     private TextField birthdayField;
-    @FXML
-    private TextField promoField;
-    //@FXML
-    //private SplitMenuButton optionField;
 
     @FXML
-    private ChoiceBox<String> promoBox;
+    private ChoiceBox<String> promoBox, optionBox;
 
     private Stage dialogStage;
     private Person person;
     private boolean okClicked = false;
-
 
 
 
@@ -54,12 +45,15 @@ public class PersonEditDialogController {
     public void initialize() {
         promoBox.setValue("L3");
         promoBox.getItems().addAll(promoList);
+        promoBox.setOnAction(this::getPromotion);
 
-        promoBox.getSelectionModel().selectedIndexProperty().addListener(
-                (ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
-                    promoField.setText(promoField[new_val.intValue()]);
+        optionBox.setValue("Imagerie");
+        optionBox.getItems().addAll(optionList);
+        optionBox.setOnAction(this::getSpecialite);
+
 
     }
+
 
 
     /**
@@ -70,6 +64,7 @@ public class PersonEditDialogController {
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
     }
+
 
     /**
      * Sets the person to be edited in the dialog.
@@ -82,11 +77,48 @@ public class PersonEditDialogController {
         firstNameField.setText(person.getFirstName());
         lastNameField.setText(person.getLastName());
         birthdayField.setText(person.getBirthday());
-        //birthdayField.setPromptText("yyyy");
-        promoField.setText(person.getPromo());
-       // optionField.setText(person.getOption());
+
+        promoBox.setValue(person.getPromo());
+        if (person.getPromo().equals("M1") || person.getPromo().equals("M2")) {
+            optionBox.setValue(person.getOption());
+        }
+        else {
+            optionBox.setDisable(true);
+            optionBox.setValue(null);
+        }
+
+    }
 
 
+    /**
+     * Get Promo on action.
+     *
+     *
+     */
+
+    private String getPromotion (javafx.event.ActionEvent e) {
+        String promotion = promoBox.getValue();
+        if (promotion.equals("L3")) {
+            optionBox.setDisable(true);
+        }
+        else {
+            optionBox.setDisable(false);
+        }
+        return promoBox.getValue();
+    }
+
+    /**
+     * Get Option on action.
+     *
+     *
+     */
+    public String getSpecialite (javafx.event.ActionEvent e) {
+        if (getPromotion(e).equals("M1") || getPromotion(e).equals("M2")) {
+            return optionBox.getValue();
+        }
+        else {
+            return null;
+        }
     }
 
     /**
@@ -108,7 +140,7 @@ public class PersonEditDialogController {
             person.setLastName(lastNameField.getText());
             person.setBirthday(birthdayField.getText());
             person.setPromo(promoBox.getValue());
-           // person.setOption(optionField.getText());
+            person.setOption(optionBox.getValue());
             okClicked = true;
             dialogStage.close();
         }
@@ -137,8 +169,8 @@ public class PersonEditDialogController {
             errorMessage += "No valid last name!\n";
         }
 
-        if (birthdayField.getText() == null || birthdayField.getText().length() == 0) {
-            errorMessage += "No valid year of birth!\n";
+        if (birthdayField.getText() == null || birthdayField.getText().length() == 0 || birthdayField.getText().length() > 4) {
+                errorMessage += "No valid year of birth you must enter 4 integer !\n";
         }
 
         if (errorMessage.length() == 0) {

@@ -12,14 +12,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
 
     private Stage primaryStage;
-    private BorderPane rootLayout;
+
 
     /**
      * The data as an observable list of Persons.
@@ -32,14 +31,14 @@ public class MainApp extends Application {
     public MainApp() {
         // Add some sample data
         personData.add(new Person("Hans", "Muster","1995", "M2", "Imagerie"));
-        personData.add(new Person("Ruth", "Mueller","1995", "M2", "Imagerie"));
-        personData.add(new Person("Heinz", "Kurz","1995", "M1", "Imagerie"));
-        personData.add(new Person("Cornelia", "Meier","1995", "M1", "Imagerie"));
-        personData.add(new Person("Werner", "Meyer","1995", "L3", "Aucune"));
-        personData.add(new Person("Lydia", "Kunz","1995","M1", "Imagerie"));
-        personData.add(new Person("Anna", "Best","1995", "M2", "Imagerie"));
-        personData.add(new Person("Stefan", "Meier","1995", "M1", "Imagerie"));
-        personData.add(new Person("Martin", "Mueller","1995", "M2", "Imagerie"));
+        personData.add(new Person("Ruth", "Mueller","1997", "M1", "Biotechnologie"));
+        personData.add(new Person("Heinz", "Kurz","1996", "M2", "Physiologie"));
+        personData.add(new Person("Cornelia", "Meier","1999", "L3", "Aucune"));
+        personData.add(new Person("Werner", "Meyer","1995", "M2", "Imagerie"));
+        personData.add(new Person("Lydia", "Kunz","1997","M1", "Physiologie"));
+        personData.add(new Person("Anna", "Best","1998", "M2", "Imagerie"));
+        personData.add(new Person("Stefan", "Meier","1998", "M1", "Imagerie"));
+        personData.add(new Person("Martin", "Mueller","1999", "M1", "Biotechnologie"));
     }
 
     /**
@@ -58,31 +57,10 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("AddressApp");
-        //this.primaryStage.getIcons().add(new Image("C:\Users\Adélaïde Pillois\Documents\IHM\iconfinder_Book3_34201.png"));
-
-        //initRootLayout();
 
         showButtonMenuView();
     }
 
-    /**
-     * Initializes the root layout.
-     */
-    /*public void initRootLayout() {
-        try {
-            // Load root layout from fxml file.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
-            rootLayout = (BorderPane) loader.load();
-
-            // Show the scene containing the root layout.
-            Scene scene = new Scene(rootLayout);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
 
     /**
      * Shows the person overview inside the root layout.
@@ -99,8 +77,6 @@ public class MainApp extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
 
-            // Set person overview into the center of root layout.
-            //rootLayout.setCenter(personOverview);
 
             // Give the controller access to the main app.
             PersonOverviewController controller = loader.getController();
@@ -125,9 +101,6 @@ public class MainApp extends Application {
             Scene scene = new Scene(buttonMenuView);
             primaryStage.setScene(scene);
             primaryStage.show();
-
-            // Set person overview into the center of root layout.
-            //rootLayout.setCenter(buttonMenuView);
 
             // Give the controller access to the main app.
             ButtonMenuViewController controller = loader.getController();

@@ -2,7 +2,6 @@ package ch.makery.address.view;
 
 import ch.makery.address.MainApp;
 import ch.makery.address.model.Person;
-import ch.makery.address.util.DateUtil;
 import javafx.fxml.FXML;
 
 public class ButtonMenuViewController {
@@ -13,7 +12,7 @@ public class ButtonMenuViewController {
     }
 
     /**
-     * Called when the user clicks the new button. Opens a dialog to edit
+     * Called when the user clicks the new button on the menu. Opens a dialog to edit
      * details for a new person.
      */
     @FXML
@@ -24,7 +23,10 @@ public class ButtonMenuViewController {
             mainApp.getPersonData().add(tempPerson);
         }
     }
-
+    /**
+     * Called when the user clicks the second button of the menu. Opens a dialog to show
+     * all person.
+     */
     @FXML
     private void handleShowPerson() {
         boolean okClicked = mainApp.showPersonOverview();

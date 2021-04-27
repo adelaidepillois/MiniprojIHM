@@ -1,7 +1,7 @@
 package ch.makery.address.model;
 
-
 import javafx.beans.property.*;
+
 
 /**
  * Model class for a Person.
@@ -67,19 +67,14 @@ public class Person {
     public StringProperty promoProperty() {
         return promo;
     }
-    /*public void setPromo(String promo) {
-        this.promo.set(promo);
-    }
     public String getPromo() {
         return promo.get();
-    }*/
-
-    public String getPromo() {
-        return promo;
+    }
+    public void setPromo(String promo) {
+        this.promo.set(promo);
     }
 
-    public void setPromo(Object value) {
-    }
+
 
     public StringProperty optionProperty() {
         return option;
@@ -99,7 +94,6 @@ public class Person {
     public void setBirthday(String birthday) {
         this.birthday.set(birthday);
     }
-
     public StringProperty birthdayProperty() {
         return birthday;
     }
