@@ -10,6 +10,7 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -33,7 +34,7 @@ public class MainApp extends Application {
         personData.add(new Person("Hans", "Muster","1995", "M2", "Imagerie"));
         personData.add(new Person("Ruth", "Mueller","1997", "M1", "Biotechnologie"));
         personData.add(new Person("Heinz", "Kurz","1996", "M2", "Physiologie"));
-        personData.add(new Person("Cornelia", "Meier","1999", "L3", "Aucune"));
+        personData.add(new Person("Cornelia", "Meier","1999", "L3", ""));
         personData.add(new Person("Werner", "Meyer","1995", "M2", "Imagerie"));
         personData.add(new Person("Lydia", "Kunz","1997","M1", "Physiologie"));
         personData.add(new Person("Anna", "Best","1998", "M2", "Imagerie"));
@@ -56,7 +57,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("AddressApp");
+        this.primaryStage.setTitle("Gestion des étudiants GPHY");
 
         showButtonMenuView();
     }
@@ -125,23 +126,28 @@ public class MainApp extends Application {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/PersonEditDialog.fxml"));
-            AnchorPane page = loader.load();
+            AnchorPane personEditDialog = (AnchorPane) loader.load();
 
             // Create the dialog Stage.
-            Stage dialogStage = new Stage();
+            /*Stage dialogStage = new Stage();
             dialogStage.setTitle("Edit Person");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
-            dialogStage.setScene(scene);
+            dialogStage.setScene(scene);*/
 
+            //Show the scene containing.
+            Scene scene = new Scene(personEditDialog);
+            primaryStage.setScene(scene);
+            primaryStage.show();            
+            
             // Set the person into the controller.
             PersonEditDialogController controller = loader.getController();
-            controller.setDialogStage(dialogStage);
+            controller.setMainApp(this);
             controller.setPerson(person);
 
             // Show the dialog and wait until the user closes it
-            dialogStage.showAndWait();
+            primaryStage.showAndWait();
 
             return controller.isOkClicked();
         } catch (IOException e) {
