@@ -1,7 +1,6 @@
 package ch.makery.address.view;
 
 
-import ch.makery.address.MainApp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,7 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import ch.makery.address.model.Person;
-import javafx.stage.Window;
+
 
 
 /**
@@ -35,7 +34,6 @@ public class PersonEditDialogController {
     private Stage dialogStage;
     private Person person;
     private boolean okClicked = false;
-    private MainApp mainApp;
 
 
 
@@ -61,14 +59,12 @@ public class PersonEditDialogController {
     /**
      * Sets the stage of this dialog.
      *
-     * @param 
+     * @param dialogStage
      */
-    /*public void setDialogStage(Stage dialogStage) {
+    public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
-    }*/
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
     }
+
 
     /**
      * Sets the person to be edited in the dialog.
@@ -146,8 +142,7 @@ public class PersonEditDialogController {
             person.setPromo(promoBox.getValue());
             person.setOption(optionBox.getValue());
             okClicked = true;
-            //dialogStage.close();
-            mainApp.showPersonOverview();
+            dialogStage.close();
         }
     }
 
@@ -156,8 +151,7 @@ public class PersonEditDialogController {
      */
     @FXML
     private void handleCancel() {
-        //dialogStage.close();
-        mainApp.showButtonMenuView();
+        dialogStage.close();
     }
 
     /**
@@ -184,8 +178,7 @@ public class PersonEditDialogController {
         } else {
             // Show the error message.
             Alert alert = new Alert(AlertType.ERROR);
-            //alert.initOwner(dialogStage);
-            alert.initOwner(mainApp.getPrimaryStage());
+            alert.initOwner(dialogStage);
             alert.setTitle("Invalid Fields");
             alert.setHeaderText("Please correct invalid fields");
             alert.setContentText(errorMessage);

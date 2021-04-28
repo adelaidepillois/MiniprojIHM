@@ -10,7 +10,6 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -126,28 +125,23 @@ public class MainApp extends Application {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/PersonEditDialog.fxml"));
-            AnchorPane personEditDialog = (AnchorPane) loader.load();
+            AnchorPane page = loader.load();
 
             // Create the dialog Stage.
-            /*Stage dialogStage = new Stage();
+            Stage dialogStage = new Stage();
             dialogStage.setTitle("Edit Person");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
-            dialogStage.setScene(scene);*/
+            dialogStage.setScene(scene);
 
-            //Show the scene containing.
-            Scene scene = new Scene(personEditDialog);
-            primaryStage.setScene(scene);
-            primaryStage.show();            
-            
             // Set the person into the controller.
             PersonEditDialogController controller = loader.getController();
-            controller.setMainApp(this);
+            controller.setDialogStage(dialogStage);
             controller.setPerson(person);
 
             // Show the dialog and wait until the user closes it
-            primaryStage.showAndWait();
+            dialogStage.showAndWait();
 
             return controller.isOkClicked();
         } catch (IOException e) {
