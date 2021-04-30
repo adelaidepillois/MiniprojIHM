@@ -6,7 +6,7 @@ import javafx.beans.property.*;
 /**
  * Model class for a Person.
  *
- * @author Marco Jakob
+ * @author Pillois Adélaïde Perrine Marcou
  */
 public class Person {
 

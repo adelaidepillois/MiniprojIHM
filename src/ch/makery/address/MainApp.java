@@ -15,6 +15,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Main of Application
+ * @author Pillois Adélaïde Perrine Marcou
+ */
 public class MainApp extends Application {
 
     private Stage primaryStage;

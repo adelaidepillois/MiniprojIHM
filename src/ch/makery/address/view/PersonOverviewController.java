@@ -31,6 +31,7 @@ public class PersonOverviewController {
 
     /**
      * The constructor.
+     * @author Pillois Adélaïde Perrine Marcou
      * The constructor is called before the initialize() method.
      */
     public PersonOverviewController() {

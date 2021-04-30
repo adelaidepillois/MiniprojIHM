@@ -14,7 +14,7 @@ import ch.makery.address.model.Person;
 /**
  * Dialog to edit details of a person.
  *
- * @author Marco Jakob
+ * @author Pillois Adélaïde Perrine Marcou
  */
 public class PersonEditDialogController {
 

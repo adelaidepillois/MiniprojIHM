@@ -4,6 +4,11 @@ import ch.makery.address.MainApp;
 import ch.makery.address.model.Person;
 import javafx.fxml.FXML;
 
+/**
+ * Lien entre Button et Event
+ * @author Pillois Adélaïde Perrine Marcou
+ */
+
 public class ButtonMenuViewController {
     private MainApp mainApp;
 
